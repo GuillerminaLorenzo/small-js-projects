@@ -29,6 +29,7 @@ window.addEventListener('keyup', function(e) {
         avatar.style.left = `${currLeft + 50}px`;
         avatar.style.transform =  'scale(1,1)';
     }
+    if (isTouching(avatar, coin)) moveCoin();
 });
 
 const extractPos = (pos) => {
