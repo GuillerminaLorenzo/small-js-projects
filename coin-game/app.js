@@ -15,11 +15,9 @@ const coin = document.querySelector('#coin');
 
 window.addEventListener('keyup', function(e) {
     if(e.key === 'ArrowDown') {
-        const currTop = extractPos(avatar.style.top);
-        avatar.style.top = `${currTop + 50}px`;
+        moveVertical(avatar, 50);
     } else if (e.key === 'ArrowUp') {
-        const currTop = extractPos(avatar.style.top);
-        avatar.style.top = `${currTop - 50}px`;
+        moveVertical(avatar, -50);
     } else if (e.key === 'ArrowLeft') {
         const currLeft = extractPos(avatar.style.left);
         avatar.style.left = `${currLeft - 50}px`;
@@ -31,6 +29,11 @@ window.addEventListener('keyup', function(e) {
     }
     if (isTouching(avatar, coin)) moveCoin();
 });
+
+const moveVertical = (element, amount) => {
+    const currTop = extractPos(avatar.style.top);
+    element.style.top = `${currTop + amount}px`;
+}
 
 const extractPos = (pos) => {
     if (!pos) return 100;
