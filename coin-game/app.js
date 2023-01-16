@@ -19,12 +19,10 @@ window.addEventListener('keyup', function(e) {
     } else if (e.key === 'ArrowUp') {
         moveVertical(avatar, -50);
     } else if (e.key === 'ArrowLeft') {
-        const currLeft = extractPos(avatar.style.left);
-        avatar.style.left = `${currLeft - 50}px`;
+        moveHorizontal(avatar, -50);
         avatar.style.transform =  'scale(-1,1)';
     } else if (e.key === 'ArrowRight') {
-        const currLeft = extractPos(avatar.style.left);
-        avatar.style.left = `${currLeft + 50}px`;
+        moveHorizontal(avatar, 50);
         avatar.style.transform =  'scale(1,1)';
     }
     if (isTouching(avatar, coin)) moveCoin();
@@ -33,6 +31,11 @@ window.addEventListener('keyup', function(e) {
 const moveVertical = (element, amount) => {
     const currTop = extractPos(avatar.style.top);
     element.style.top = `${currTop + amount}px`;
+}
+
+const moveHorizontal = (element, amount) => {
+    const currLeft = extractPos(avatar.style.left);
+    element.style.left = `${currLeft + amount}px`;
 }
 
 const extractPos = (pos) => {
